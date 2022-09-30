@@ -96,14 +96,14 @@ public class HodDAOImpl implements HodDAO {
 			throw new ExecutionException(sqle.getMessage());
 		}
 		
-		return null;
+		return res;
 	}
 	
 	public List<ProblemDTO> getRaisedProblem() throws ExecutionException{
 		List<ProblemDTO> ret = null;
 		
 		try(Connection con = ConnectionUtil.provideConnection() ){
-			PreparedStatement ps = con.prepareStatement("select p.problemid, p.description, p.status, p.raisedDate, e.engineerid, e.username, em.employeeid,em.username From problems p Inner Join engineer e INNER JOIN employee em ON  p.EngineerAssigned=e.engineerid And p.raisedby = em.employeeid;");
+			PreparedStatement ps = con.prepareStatement("select p.problemid, p.description, p.status, p.raisedDate, e.engineerid, e.username, em.employeeid,em.username From problems p Inner Join engineer e INNER JOIN employee em ON  p.EngineerAssigned=e.engineerid And p.raisedby = em.employeeid AND p.status=0");
 			
 			ResultSet rs = ps.executeQuery();
 			ret = new ArrayList<>();

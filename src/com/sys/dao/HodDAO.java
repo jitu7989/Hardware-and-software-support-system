@@ -24,14 +24,18 @@ public interface HodDAO {
 			ps.setString(1, a.getUserName());
 			ps.setInt(2, Objects.hash(a.getPassword()));
 			
-			return ps.execute();
+			
+			if(ps.executeQuery().next()) {
+				return true;
+			}
+			else {
+				return false;
+			}
 			
 		}
 		catch(SQLException e){
-			throw new ExecutionExpection( e.getMessage() );
+			throw new ExecutionException( e.getMessage() );
 		}
-		
-		return true;
 	}
 	
 	public List<Engineer> getEnginners() throws ExecutionException;
