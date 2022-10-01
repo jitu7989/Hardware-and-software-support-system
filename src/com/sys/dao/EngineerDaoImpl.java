@@ -20,8 +20,12 @@ public class EngineerDaoImpl implements EngineerDao{
 			ps.setString( 1 , e.getUsername() );
 			ps.setString( 2 , e.getPassword() );
 			
-			if(ps.executeUpdate()==1)
+			ResultSet rs = ps.executeQuery();
+			
+			if( rs.next() ) {
+				e.setEngineerID(rs.getInt(1) );
 				return true;
+			}
 			
 			if(con.prepareStatement("Select * from engineer where username=?").executeUpdate()==1) {
 				throw new ExecutionException("Wrong Password");
@@ -41,8 +45,10 @@ public class EngineerDaoImpl implements EngineerDao{
 		List<ProblemDTO> ls = null;
 		
 		try(Connection con = ConnectionUtil.provideConnection()){
-			
+			System.out.println("Enginnerid: "+e.getEngineerID());
 			PreparedStatement ps = con.prepareStatement("select p.problemid, p.description, p.status, p.raisedDate, e.engineerid, e.username, em.employeeid,em.username From problems p Inner Join engineer e INNER JOIN employee em ON p.EngineerAssigned=? AND p.EngineerAssigned=e.engineerid And p.raisedby = em.employeeid AND p.status=0");
+			
+			ps.setInt(1, e.getEngineerID());
 			
 			ResultSet rs = ps.executeQuery();
 			ls = new ArrayList<>();
@@ -74,7 +80,7 @@ public class EngineerDaoImpl implements EngineerDao{
 	}
 
 	@Override
-	public boolean updateProblemStatus(int problemid,int update) throws ExecutionException{
+	public boolean updateProblemStatus(int problemid,int update,Engineer e) throws ExecutionException{
 		
 		try(Connection con = ConnectionUtil.provideConnection()){
 			

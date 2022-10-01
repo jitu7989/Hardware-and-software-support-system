@@ -15,7 +15,7 @@ public class GetProblems {
 			ls.forEach(i->{
 				System.out.println("===============");
 				System.out.println("ProblemID: "+i.getProblemid()+" Raised date:- "+i.getRaiseddate().toLocalDate());
-				System.out.println("Problem Description: "+i.getDescription());
+				System.out.println("Problem Description: "+i.getDescription()+" Attended:- "+i.getStatus() );
 				System.out.println("Engineer Details:- Id="+i.getEngineerid()+" UserName="+i.getEngineerUsername());
 				System.out.println("Employee Details:- Id="+i.getEmployeeid() +" UserName="+i.getEmployeeUsername() );
 				System.out.println("===============");

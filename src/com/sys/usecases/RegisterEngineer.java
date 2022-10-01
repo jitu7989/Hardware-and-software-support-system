@@ -14,12 +14,11 @@ public class RegisterEngineer {
 		System.out.println("To register engineer enter initial username and password");
 		
 		System.out.println("Enter username: ");
-		e.setUsername(sc.nextLine());
+		e.setUsername(sc.next());
 		
 		System.out.println("Enter password:");
-		e.setPassword( sc.nextLine() );
-		
-		sc.close();
+		e.setPassword( sc.next() );
+//		sc.close();
 		
 		HodDAOImpl hodimpl = new HodDAOImpl();
 		

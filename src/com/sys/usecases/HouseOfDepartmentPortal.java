@@ -80,8 +80,12 @@ public class HouseOfDepartmentPortal {
 				case 4: 
 					GetProblems.run();
 					break;
-				case 5: break;
-				case 6: break;
+				case 5: 
+					AssignProblem.run();
+					break;
+				case 6: 
+					return true;
+					
 				case 7: return false;
 				default:System.out.println("Try again");
 			

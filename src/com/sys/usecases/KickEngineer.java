@@ -15,14 +15,20 @@ public class KickEngineer {
 		
 		Engineer eng = new Engineer();
 		
+		System.out.println("Enter engineer id to kick: ");
 		eng.setEngineerID(Integer.parseInt(sc.nextLine() ));
+		
 		HodDAO hd = new HodDAOImpl();
+		
 		try {
-			hd.kickEngineer(eng);
+			
+			System.out.println( hd.kickEngineer(eng) );
+			
 		}
 		catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
+		
 	}
 
 }

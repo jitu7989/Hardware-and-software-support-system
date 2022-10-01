@@ -50,7 +50,7 @@ public class ProblemDTO {
 	public void setRaiseddate(Date raiseddate) {
 		this.raiseddate = raiseddate;
 	}
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 	public void setStatus(boolean status) {

@@ -22,6 +22,7 @@ public class HodDAOImpl implements HodDAO {
 			
 			ps.setString( 1 , e.getUsername() );
 			ps.setString(2, e.getPassword());
+			
 			try {
 				ps.executeUpdate();
 			}
@@ -80,10 +81,9 @@ public class HodDAOImpl implements HodDAO {
 			
 			PreparedStatement ps = con.prepareStatement("delete from engineer where engineerid=?");
 			
-			ps.setInt(1, e.getEngineerID());
+			ps.setInt( 1,  e.getEngineerID());
 			
-			if(ps.execute()) {
-				
+			if(ps.executeUpdate()!=0) {
 				res = "Engineer has been removed";
 			}
 			else {
@@ -143,10 +143,10 @@ public class HodDAOImpl implements HodDAO {
 			
 			PreparedStatement ps = con.prepareStatement("update  problems set engineerAssigned=? where problemid=?");
 			
-			ps.setInt(1, problemid);
-			ps.setInt(2,engineerid);
+			ps.setInt(1, engineerid);
+			ps.setInt(2,problemid);
 			
-			if(!ps.execute()) throw new ExecutionException("Failed to set engineer");
+			if(ps.executeUpdate()==0) throw new ExecutionException("Failed to set engineer");
 			
 		}
 		catch(SQLException sqle) {
@@ -155,7 +155,5 @@ public class HodDAOImpl implements HodDAO {
 		
 		return true;
 	}
-
-	
 	
 }
