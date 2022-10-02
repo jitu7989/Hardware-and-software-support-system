@@ -9,7 +9,7 @@ public class EngineerPortal {
 	public static boolean start() {
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("To manage the system login: ");
+		System.out.println("Log in into your account: ");
 		System.out.println("Press # to go Back to home: ");
 		EngineerDao engi = new EngineerDaoImpl();
 		
@@ -75,10 +75,10 @@ public class EngineerPortal {
 					UpdateProblemStatus.run(eng);
 					break;
 				case 3: 
-					ViewAttendedProblem.run();
+					ViewAttendedProblem.run(eng);
 					break;
 				case 4: 
-					ChangePasswordEngineer.run();
+					ChangePasswordEngineer.run(eng);
 					break;
 				case 5: 
 					return true;

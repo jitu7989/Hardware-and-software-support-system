@@ -23,7 +23,8 @@ public class RegisterEngineer {
 		HodDAOImpl hodimpl = new HodDAOImpl();
 		
 		try {
-		hodimpl.registerEngineer(e);
+			hodimpl.registerEngineer(e);
+			System.out.println("Engineer registered!");
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());

@@ -8,11 +8,11 @@ public interface EmployeeDao {
 
 	public boolean login(Employee e) throws ExecutionException;
 	
-	public boolean registerComplaint()throws ExecutionException;
+	public boolean registerComplaint(ProblemDTO PDTO)throws ExecutionException;
 	
-	public ProblemDTO seeStatus(int complaintId) throws ExecutionException;
+	public ProblemDTO seeStatus(int complaintId,Employee x) throws ExecutionException;
 	
-	public List<ProblemDTO> seeComplainHistory() throws ExecutionException;
+	public List<ProblemDTO> seeComplainHistory(Employee e) throws ExecutionException;
 	
 	public boolean changePassword(Employee e) throws ExecutionException;
 	

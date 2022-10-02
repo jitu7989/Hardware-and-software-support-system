@@ -15,7 +15,7 @@ public class ProblemDTO {
 	private int employeeid;
 	private String engineerUsername;
 	private String employeeUsername;
-	
+	private int count;
 	
 	
 	@Override
@@ -79,6 +79,14 @@ public class ProblemDTO {
 	}
 	public void setEmployeeUsername(String employeeUsername) {
 		this.employeeUsername = employeeUsername;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 	

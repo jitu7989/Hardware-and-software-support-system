@@ -84,11 +84,13 @@ public class EngineerDaoImpl implements EngineerDao{
 		
 		try(Connection con = ConnectionUtil.provideConnection()){
 			
-			PreparedStatement ps = con.prepareStatement("update problems Set status=? where problemid=? ");
+			PreparedStatement ps = con.prepareStatement("update problems Set status=? where problemid=? And engineerAssigned=?");
 			
 			ps.setInt(1, update );
 			ps.setInt( 2 , problemid);
-			if(!ps.execute()) {
+			ps.setInt(3, e.getEngineerID());
+			
+			if(ps.executeUpdate()!=1) {
 				throw new ExecutionException("Failed to update");
 			}
 			return true;

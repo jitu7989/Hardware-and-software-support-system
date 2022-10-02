@@ -12,6 +12,8 @@ public class GetProblems {
 		try {
 			List<ProblemDTO> ls= hd.getRaisedProblem();
 			
+			if(ls.size()==0) System.out.println("No problems found");
+			
 			ls.forEach(i->{
 				System.out.println("===============");
 				System.out.println("ProblemID: "+i.getProblemid()+" Raised date:- "+i.getRaiseddate().toLocalDate());

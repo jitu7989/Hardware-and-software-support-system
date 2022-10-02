@@ -42,9 +42,10 @@ public class UpdateProblemStatus {
 		
 		try {
 			ed.updateProblemStatus(problemid, status,engineer);
+			System.out.println("Status updated succesfully...");
 		}
 		catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 		
 	}
